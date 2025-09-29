@@ -29,7 +29,9 @@ uint32_t count_leading_signs(int32_t x) {
 }
 
 static inline uint32_t rotate_right(uint32_t x, int32_t imm) {
-    return (x >> imm) | (x << (32 - imm));
+    imm &= 31;
+    if (!imm) return x;
+    return (x >> imm) | (x << ((32 - imm) & 31));
 }
 
 int32_t saturate_signed(int32_t val, uint32_t nbits) {
@@ -57,7 +59,7 @@ void execute(const DecodedInsn& di, int32_t* regs, uint8_t* mem, int32_t& pc) {
         }
         case OP_BEQ:
         case OP_BNE: {
-            int32_t target = static_cast<int32_t>(static_cast<int16_t>(di.imm << 2));
+            int32_t target = static_cast<int32_t>(static_cast<int16_t>(di.imm)) << 2;
             bool cond = iop == OP_BEQ ? (regs[di.rs] == regs[di.rt]) : (regs[di.rs] != regs[di.rt]);
             if (cond) 
                 pc += target;
@@ -70,6 +72,10 @@ void execute(const DecodedInsn& di, int32_t* regs, uint8_t* mem, int32_t& pc) {
             break;
         }
         case OP_LD: {
+            if ((di.imm & 0b11) != 0) {
+                regs[8] = SIGEXCEPT;
+                break;
+            }
             regs[di.rt] = load_word(mem, regs[di.rs] + di.imm);
             break;
         }
@@ -86,6 +92,10 @@ void execute(const DecodedInsn& di, int32_t* regs, uint8_t* mem, int32_t& pc) {
             break;
         }
         case OP_ST: {
+            if ((di.imm & 0b11) != 0) {
+                regs[8] = SIGEXCEPT;
+                break;
+            }
             store_word(mem, regs[di.rs] + di.imm, regs[di.rt]);
             break;
         }
