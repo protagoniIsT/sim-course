@@ -1,5 +1,5 @@
 #include "decoder.h"
-// J BNE BEQ
+
 void decode(int32_t insn, DecodedInsn& di) {
     int32_t opcode = (uint32_t)insn >> 26;
     di.opcode = static_cast<int32_t>(opcode);;
@@ -118,9 +118,5 @@ void decode(int32_t insn, DecodedInsn& di) {
             break;
             // PC ← PC[31:28] || instr_index || 0b00
         }
-        default:
-            std::cerr << "Unknown opcode: " << opcode << "\n";
-            di.iopcode = OP_INVALID;
-            return;
     }
 }

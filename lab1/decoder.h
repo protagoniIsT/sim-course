@@ -33,7 +33,6 @@
 #define FUNCT6_SYSCALL 0b111110
 
 typedef enum {
-    OP_INVALID = -1,
     OP_ADD,
     OP_AND,
     OP_BDEP,

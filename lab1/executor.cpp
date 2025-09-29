@@ -113,9 +113,6 @@ void execute(const DecodedInsn& di, int32_t* regs, uint8_t* mem, int32_t& pc) {
                     std::cout << "Misaligned STP offset\n";
                     break;
                 }
-                default:
-                    std::cout << "Unknown syscall: " << regs[8] << "\n";
-                    break;
             }
             regs[8] = SIGTERM;
             break;

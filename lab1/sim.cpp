@@ -6,9 +6,9 @@
 
 int32_t load_word(const uint8_t* mem, int32_t addr) {
     return (int32_t)mem[addr] |
-           ((int32_t)mem[addr + 1] << 8)  |
-           ((int32_t)mem[addr + 2] << 16) |
-           ((int32_t)mem[addr + 3] << 24);
+          ((int32_t)mem[addr + 1] << 8)  |
+          ((int32_t)mem[addr + 2] << 16) |
+          ((int32_t)mem[addr + 3] << 24);
 }
 
 void store_word(uint8_t* mem, int32_t addr, int32_t value) {
@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     uint8_t mem[MEM_SIZE];
     int32_t regs[NUM_REGS]{0};
     regs[0] = n;
-    regs[8] = 3;
+    regs[8] = NONE;
     int32_t pc = 12;
     
     load_bin(mem, "fib.bin");

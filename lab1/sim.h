@@ -11,7 +11,8 @@
 typedef enum {
     SIGTERM,
     SIGPRINT,
-    SIGEXCEPT
+    SIGEXCEPT,
+    NONE   
 } SyscallCode;
 
 int32_t load_word(const uint8_t* mem, int32_t addr);
