@@ -27,7 +27,6 @@ void load_bin(uint8_t* mem, const char* filename)
     }
 
     in.read(reinterpret_cast<char*>(mem), MEM_SIZE);
-    std::cout << "Read " << in.gcount() << " bytes\n";
     if (!in && !in.eof()) {
         std::cerr << "Error reading " << filename << "\n";
         std::exit(1);
@@ -49,7 +48,6 @@ int main(int argc, char* argv[]) {
     int32_t pc = 12;
     
     load_bin(mem, "fib.bin");
-    std::cout << "Loaded binary\n";
 
     while (true) {
         int32_t insn = load_word(mem, pc);
