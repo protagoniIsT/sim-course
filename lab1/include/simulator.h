@@ -21,13 +21,14 @@ public:
     void run();
 
 private:
-    std::unique_ptr<Memory> mem;
+    Memory mem;
     CPU cpu;
     
     std::string input_path;
     std::string output_path;
     std::vector<int32_t> args;
     Mode mode;
+    std::size_t file_size;
 
     bool handle_syscall();
 };

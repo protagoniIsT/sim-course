@@ -27,7 +27,7 @@ namespace isa_detail {
     constexpr int FUNCT6_CLS = 0b111001;
     constexpr int FUNCT6_SYSCALL = 0b111110;
 
-    typedef enum {
+    enum InnerOpCode {
         OP_ADD,
         OP_AND,
         OP_BDEP,
@@ -42,7 +42,7 @@ namespace isa_detail {
         OP_BEQ,
         OP_LD,
         OP_J
-    } InnerOpCode;
+    };
 } // end namespace isa_detail
 
 

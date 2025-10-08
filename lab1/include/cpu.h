@@ -11,9 +11,7 @@
 
 class CPU {
 public:
-    CPU(int32_t pc_, Memory* memory_);
-
-    void attach_memory(Memory* memory_);
+    CPU(int32_t pc_, Memory& memory_);
 
     void load_bin(const std::string& filename);
 
@@ -33,5 +31,5 @@ private:
     std::array<int32_t, cpu::NUM_REGS> regs;
     Decoder decoder;
     Executor executor;
-    Memory* memory;
+    Memory& memory;
 };

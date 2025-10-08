@@ -8,5 +8,8 @@
 class Decoder {
 public:
     Decoder()  = default;
-    void decode(int32_t insn, isa::DecodedInstr& di);
+    void decode(uint32_t insn, isa::DecodedInstr& di);
+
+private:
+    constexpr uint32_t extract(uint32_t word, std::size_t msb, std::size_t lsb);
 };

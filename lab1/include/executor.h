@@ -10,7 +10,7 @@ class Executor {
 public:
     Executor() = default;
 
-    void execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM_REGS>& regs, Memory* memory, int32_t& pc);
+    void execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM_REGS>& regs, Memory& memory, int32_t& pc);
 
 private:
     static uint32_t bit_deposit(uint32_t src, uint32_t mask);

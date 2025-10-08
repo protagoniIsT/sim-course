@@ -1,7 +1,7 @@
 #include "executor.h"
 #include <stdexcept>
 
-void Executor::execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM_REGS>& regs, Memory* memory, int32_t& pc) {
+void Executor::execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM_REGS>& regs, Memory& memory, int32_t& pc) {
     using namespace isa_detail;
 
     InnerOpCode iop = di.iopcode;
@@ -21,7 +21,7 @@ void Executor::execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM
         }
         case InnerOpCode::OP_BEQ:
         case InnerOpCode::OP_BNE: {
-            int32_t target = di.imm << 2;
+            int32_t target = static_cast<int32_t>(static_cast<uint32_t>(di.imm) << 2);
             bool cond = iop == InnerOpCode::OP_BEQ ? (regs[di.rs] == regs[di.rt]) : (regs[di.rs] != regs[di.rt]);
             if (cond) 
                 pc += target;
@@ -34,11 +34,12 @@ void Executor::execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM
             break;
         }
         case InnerOpCode::OP_LD: {            
-            if ((di.imm & 0b11) != 0) {
-                regs[8] = SyscallCode::EXCEPT;
-                break;
+            int32_t addr = regs[di.rs] + di.imm;
+            if ((addr & 0b11) != 0) { 
+                regs[8] = SyscallCode::EXCEPT; 
+                break; 
             }
-            regs[di.rt] = memory->load_word(regs[di.rs] + di.imm);
+            regs[di.rt] = memory.load_word(addr);
             break;
         }
         case InnerOpCode::OP_RORI: {
@@ -54,25 +55,26 @@ void Executor::execute(const isa::DecodedInstr& di, std::array<int32_t, cpu::NUM
             break;
         }
         case InnerOpCode::OP_ST: {
-            if ((di.imm & 0b11) != 0) {
-                regs[8] = SyscallCode::EXCEPT;
-                break;
+            int32_t addr = regs[di.rs] + di.imm;
+            if ((addr & 0b11) != 0) { 
+                regs[8] = SyscallCode::EXCEPT; 
+                break; 
             }
-            memory->store_word(regs[di.rs] + di.imm, regs[di.rt]);
+            memory.store_word(addr, regs[di.rt]);
             break;
         }
         case InnerOpCode::OP_STP: {
             int32_t addr = regs[di.rs] + di.imm;
-            if ((di.imm & 0b11) != 0) {
-                regs[8] = SyscallCode::EXCEPT;
-                break;
+            if ((addr & 0b11) != 0) { 
+                regs[8] = SyscallCode::EXCEPT; 
+                break; 
             }
-            memory->store_word(addr, regs[di.rt]);
-            memory->store_word(addr + 4, regs[di.rd]);
+            memory.store_word(addr, regs[di.rt]);
+            memory.store_word(addr + 4, regs[di.rd]);
             break;
         }
         case InnerOpCode::OP_J: {
-            pc = (pc & 0xF0000000) | ((di.imm << 2) & 0x0FFFFFFC);
+            pc = (pc & 0xF0000000) | ((static_cast<uint32_t>(di.imm) << 2) & 0x0FFFFFFC);
             break;
         }
         case InnerOpCode::OP_SYSCALL: {

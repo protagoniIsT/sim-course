@@ -8,20 +8,21 @@ bool Simulator::handle_syscall() {
 
         case SyscallCode::PRINT:
             std::cout << "[SIM] RES: " << cpu.get_reg(0) << std::endl;
-            cpu.set_reg(8, SyscallCode::EXIT);
             return true;
 
         case SyscallCode::EXCEPT:
-            std::cerr << "[SIM] Exception occurred (PC=" << cpu.get_pc() << ")\n";
+            std::cout << "[SIM] Exception occurred (PC=" << cpu.get_pc() << ")\n";
             return false;
-        default:
+        case SyscallCode::NONE:
             return true;
+        default:
+            return false;
     }
 }
 
 Simulator::Simulator(std::size_t mem_size, Mode mode_) 
-    : mem(std::make_unique<Memory>(mem_size)), 
-      cpu(0, mem.get()), 
+    : mem(mem_size), 
+      cpu(0, mem), 
       mode(mode_) {}
 
 void Simulator::load_program(const std::string& path, const std::vector<int32_t>& a) {
@@ -32,18 +33,20 @@ void Simulator::load_program(const std::string& path, const std::vector<int32_t>
     output_path = in_path.stem().string() + ".bin";
 
     std::ifstream fin(input_path);
+    if (!fin) {
+        std::cerr << "Could not open " << input_path << "\n";
+        return;
+    }
     std::ofstream fout(output_path, std::ios::binary);
     assemble(fin, fout);
     fin.close();
     fout.close();
 
-    mem = std::make_unique<Memory>(memory::MEM_SIZE); 
-    cpu.attach_memory(mem.get());
+    file_size = std::filesystem::file_size(output_path);
 
+    mem.reset(); 
     cpu.load_bin(output_path);
-
-    int32_t start_pc = mem->load_word(0);
-
+    int32_t start_pc = mem.load_word(0);
     cpu.reset(start_pc);
 
     for (std::size_t i = 0; i < args.size(); ++i) {
@@ -56,7 +59,10 @@ void Simulator::load_program(const std::string& path, const std::vector<int32_t>
 
 void Simulator::run() {
     while (cpu.do_cycle()) {
-        if (!handle_syscall()) break;
+        if (cpu.get_pc() == file_size) {
+            cpu.set_reg(8, SyscallCode::EXIT);
+        }
+        if (!handle_syscall()) return;
     }
 
     if (mode == Mode::DEBUG) {

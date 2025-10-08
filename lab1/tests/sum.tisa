@@ -1,0 +1,6 @@
+.data
+    1
+.text
+    ADD X0, X1, X0
+    LD X8, 4(X9)
+    SYSCALL

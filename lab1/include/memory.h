@@ -20,7 +20,7 @@ public:
     
     void load_bin(std::ifstream& in);
 
-    void clear();
+    void reset();
 
     std::size_t size() const;
 

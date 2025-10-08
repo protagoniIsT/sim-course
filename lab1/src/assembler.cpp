@@ -115,11 +115,8 @@ void assemble(std::ifstream &fin, std::ofstream &fout) {
                         break;
                     }
                     case isa_detail::FUNCT6_SYSCALL: {
-                        uint32_t code = 0; // always SIGPRINT
                         encodedInstr |= (instrInfo->opcode & 0x3F) << 26;
-                        encodedInstr |= (code & 0xFFFFF) << 6;
                         encodedInstr |= (instrInfo->funct6 & 0x3F);
-
                         break;
                     }     
                 }

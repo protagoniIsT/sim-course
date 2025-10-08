@@ -28,7 +28,7 @@ void Memory::load_bin(std::ifstream& in) {
     }
 }
 
-void Memory::clear() {
+void Memory::reset() {
     std::fill(mem.begin(), mem.end(), 0);
 }
 
