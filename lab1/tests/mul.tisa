@@ -1,0 +1,12 @@
+.data
+    4   ; addr 4
+    -1  ; addr 8
+    1   ; addr 12
+.text
+    LD   X10,  4(X9)     ; X10 = 4
+    LD   X11,  8(X9)     ; X11 = -1
+    ADD  X12,  X0,   X0   ; X12 = 2*X0
+    ADD  X12,  X12,  X0   ; X12 = 3*X0
+    ADD  X0,   X12,  X0  ; X0 = result (copy)
+    LD   X8,   12(X9)
+    SYSCALL

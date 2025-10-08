@@ -3,3 +3,7 @@
 * python to_bin.py
 * .\sim.exe \<n>
 
+#.tisa format:
+* first - .data - enumeration of raw immediates
+* second - .text - start of the executable code
+

@@ -1,0 +1,17 @@
+.data
+    1
+.text
+    J labellll
+    ADD  X0, X0, X0
+    ADD  X0, X0, X0
+
+label:
+    ADD  X0, X0, X0
+    ADD  X0, X0, X0
+    ADD  X0, X0, X0
+    ADD  X0, X0, X0
+
+print_label:
+    ADD  X0, X0, X0
+    LD   X8, 4(X9)
+    SYSCALL
