@@ -1,6 +1,6 @@
 #include "cpu.h"
 
-CPU::CPU(int32_t pc_, Memory& memory_) : pc(pc_), memory(memory_) {}
+CPU::CPU(word_t pc_, Memory& memory_) : pc(pc_), memory(memory_) {}
 
 void CPU::load_bin(const std::string& filename) {
     std::ifstream in(filename, std::ios::binary);
@@ -11,12 +11,12 @@ void CPU::load_bin(const std::string& filename) {
 }
 
 bool CPU::do_cycle() {
-    uint32_t insn = memory.load_word(pc);
+    word_t insn = memory.load_word(pc);
     isa::DecodedInstr di{};
     decoder.decode(insn, di);
-    executor.execute(di, regs, memory, pc);
-    if (!di.changes_pc) pc += 4;
-    return regs[8] != SyscallCode::EXIT;
+    bool status = executor.execute(di, *this);
+    if (!di.changes_pc) pc += sizeof(word_t);
+    return status;
 }
 
 int32_t CPU::get_reg(std::size_t index) {
@@ -27,15 +27,27 @@ void CPU::set_reg(std::size_t index, int32_t value) {
     regs[index] = value;
 }
 
-int32_t CPU::get_pc() {
+word_t CPU::get_pc() {
     return pc;
 }
 
-void CPU::set_pc(int32_t pc_) {
+void CPU::set_pc(word_t pc_) {
     pc = pc_;
 }
 
-void CPU::reset(int32_t pc_) {
+void CPU::update_pc(int32_t offset) {
+    pc = static_cast<uint32_t>(static_cast<int64_t>(pc) + offset);
+}
+
+Memory& CPU::get_mem() {
+    return memory;
+}
+
+Executor& CPU::get_executor() {
+    return executor;
+}
+
+void CPU::reset(word_t pc_) {
     regs.fill(0);
     pc = pc_;
 }

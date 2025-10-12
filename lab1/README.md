@@ -1,9 +1,7 @@
-# Usage (clang):
-* clang sim.cpp decoder.cpp executor.cpp -o sim.exe
-* python to_bin.py
-* .\sim.exe \<n>
+# Toy ISA simuator
+# Usage
 
-#.tisa format:
-* first - .data - enumeration of raw immediates
-* second - .text - start of the executable code
+## Build & Run:
 
+```bash 
+sh sim.sh \<relative-path-to-ruby-asm-file> [args..]

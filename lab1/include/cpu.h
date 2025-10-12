@@ -2,7 +2,7 @@
 
 #include <array>
 #include <cstdint>
-#include "cpu_defs.h"
+#include "defs.h"
 #include "memory.h"
 #include "decoder.h"
 #include "executor.h"
@@ -11,7 +11,7 @@
 
 class CPU {
 public:
-    CPU(int32_t pc_, Memory& memory_);
+    CPU(word_t pc_, Memory& memory_);
 
     void load_bin(const std::string& filename);
 
@@ -20,14 +20,18 @@ public:
     int32_t get_reg(std::size_t index);
     void set_reg(std::size_t index, int32_t value);
 
-    int32_t get_pc();
-    void set_pc(int32_t pc_);
+    word_t get_pc();
+    void set_pc(word_t pc_);
+    void update_pc(int32_t offset);
 
-    void reset(int32_t pc_);
+    Memory& get_mem();
+    Executor& get_executor();
+
+    void reset(word_t pc_);
     
     void dump();
 private:
-    int32_t pc;
+    word_t pc;
     std::array<int32_t, cpu::NUM_REGS> regs;
     Decoder decoder;
     Executor executor;

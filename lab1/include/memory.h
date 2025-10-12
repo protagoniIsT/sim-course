@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstddef>
+#include "defs.h"
 
 namespace memory {
     constexpr int MEM_SIZE = 1024;
@@ -14,9 +15,9 @@ class Memory {
 public:
     explicit Memory(std::size_t size);
 
-    int32_t load_word(int32_t addr) const;
+    word_t load_word(word_t addr) const;
 
-    void store_word(int32_t addr, int32_t value);
+    void store_word(word_t addr, int64_t value);
     
     void load_bin(std::ifstream& in);
 

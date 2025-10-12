@@ -2,19 +2,19 @@
 
 Memory::Memory(std::size_t size) : mem(size, 0) {}
 
-int32_t Memory::load_word(int32_t addr) const {
-    if (addr < 0 || addr + 3 >= (int)mem.size()) {
+word_t Memory::load_word(word_t addr) const {
+    if (addr + 3 >= mem.size()) {
         std::cerr << "[Memory] Invalid read address: " << addr
                   << " (size=" << mem.size() << ")\n";
         std::abort();
     }
-    return (int32_t)mem[addr] |
-          ((int32_t)mem[addr + 1] << 8)  |
-          ((int32_t)mem[addr + 2] << 16) |
-          ((int32_t)mem[addr + 3] << 24);
+    return mem[addr] |
+          (mem[addr + 1] << 8)  |
+          (mem[addr + 2] << 16) |
+          (mem[addr + 3] << 24);
 }
 
-void Memory::store_word(int32_t addr, int32_t value) {
+void Memory::store_word(word_t addr, int64_t value) {
     mem[addr] = (uint8_t)(value);
     mem[addr + 1] = (uint8_t)(value >> 8);
     mem[addr + 2] = (uint8_t)(value >> 16);

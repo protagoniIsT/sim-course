@@ -2,53 +2,58 @@
 
 #include <cstdint>
 
-namespace isa_detail {
+namespace isa {
 
-    // opcode R-type
-    constexpr int OPCODE_RTYPE = 0b000000;
+    enum Opcode {
+        // opcode R-type
+        RTYPE = 0b000000,
 
-    // opcodes I-type
-    constexpr int OPCODE_SLTI = 0b010110;
-    constexpr int OPCODE_ST = 0b000011;
-    constexpr int OPCODE_STP = 0b001000;
-    constexpr int OPCODE_RORI = 0b111011;
-    constexpr int OPCODE_BNE = 0b100100;
-    constexpr int OPCODE_BEQ = 0b000010;
-    constexpr int OPCODE_LD = 0b011010;
-    constexpr int OPCODE_SSAT = 0b001111;
+        // opcodes I-type
+        SLTI = 0b010110,
+        ST = 0b000011,
+        STP = 0b001000,
+        RORI = 0b111011,
+        BNE = 0b100100,
+        BEQ = 0b000010,
+        LD = 0b011010,
+        SSAT = 0b001111,
 
-    // opcode J-type
-    constexpr int OPCODE_JTYPE = 0b100111;
+        // opcode J-type
+        JTYPE = 0b100111
+    };
+
 
     // funct6
-    constexpr int FUNCT6_ADD = 0b101011;
-    constexpr int FUNCT6_AND = 0b101101;
-    constexpr int FUNCT6_BDEP = 0b111010;
-    constexpr int FUNCT6_CLS = 0b111001;
-    constexpr int FUNCT6_SYSCALL = 0b111110;
-
-    enum InnerOpCode {
-        OP_ADD,
-        OP_AND,
-        OP_BDEP,
-        OP_CLS,
-        OP_SSAT,
-        OP_SYSCALL,
-        OP_SLTI,
-        OP_ST,
-        OP_STP,
-        OP_RORI,
-        OP_BNE,
-        OP_BEQ,
-        OP_LD,
-        OP_J
+    enum Funct {
+        ADD = 0b101011,
+        AND = 0b101101,
+        BDEP = 0b111010,
+        CLS = 0b111001,
+        SYSCALL = 0b111110
     };
-} // end namespace isa_detail
+     
+
+    enum class InnerOpCode {
+        ADD,
+        AND,
+        BDEP,
+        CLS,
+        SSAT,
+        SYSCALL,
+        SLTI,
+        ST,
+        STP,
+        RORI,
+        BNE,
+        BEQ,
+        LD,
+        J
+    };
+} // end namespace isa
 
 
 enum SyscallCode {
     EXIT,
     PRINT,
     EXCEPT,
-    NONE
 };

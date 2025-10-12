@@ -1,0 +1,3 @@
+/home/vboxuser/sim-course/lab1/build/CMakeFiles/main.out.dir
+/home/vboxuser/sim-course/lab1/build/CMakeFiles/edit_cache.dir
+/home/vboxuser/sim-course/lab1/build/CMakeFiles/rebuild_cache.dir

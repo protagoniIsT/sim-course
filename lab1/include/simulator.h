@@ -1,6 +1,5 @@
 #pragma once
 
-#include "assembler.h"
 #include "memory.h"
 #include "cpu.h"
 #include <fstream>
@@ -28,7 +27,7 @@ private:
     std::string output_path;
     std::vector<int32_t> args;
     Mode mode;
-    std::size_t file_size;
+    word_t file_size;
 
     bool handle_syscall();
 };
