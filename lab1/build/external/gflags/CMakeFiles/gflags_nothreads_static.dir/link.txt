@@ -1,0 +1,2 @@
+/usr/bin/llvm-ar-18 qc libgflags_nothreads_debug.a CMakeFiles/gflags_nothreads_static.dir/src/gflags.cc.o CMakeFiles/gflags_nothreads_static.dir/src/gflags_reporting.cc.o CMakeFiles/gflags_nothreads_static.dir/src/gflags_completions.cc.o
+/usr/bin/llvm-ranlib-18 libgflags_nothreads_debug.a

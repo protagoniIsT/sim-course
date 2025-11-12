@@ -92,5 +92,9 @@ void Decoder::decode(word_t insn, isa::DecodedInstr& di) {
             di.changes_pc = true;
             break;
         }
+        default: {
+            di.iopcode = InnerOpCode::UNKNOWN;
+            break;
+        }
     }
 }

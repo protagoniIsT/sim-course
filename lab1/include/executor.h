@@ -8,13 +8,19 @@
 
 class CPU;
 
+enum class ExecStatus {
+    CONTINUE,
+    EXITED,
+    EXCEPT
+};
+
 class Executor {
 public:
     Executor() = default;
 
-    bool execute(const isa::DecodedInstr& di, CPU& cpu);
+    ExecStatus execute(const isa::DecodedInstr& di, CPU& cpu);
     
-    bool handle_syscall(CPU& cpu);
+    ExecStatus handle_syscall(CPU& cpu);
 
 private:
     static word_t bit_deposit(word_t src, word_t mask);

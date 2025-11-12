@@ -2,9 +2,7 @@
 
 #include "defs.h"
 #include "helpers.h"
-#include "isa/InstructionDetails.h"
 #include "isa/InstructionInfo.h"
-#include <cstdint>
 
 class Decoder {
 public:

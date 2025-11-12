@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstdint>
+#include "defs.h"
 
 namespace isa {
 
@@ -47,7 +47,8 @@ namespace isa {
         BNE,
         BEQ,
         LD,
-        J
+        J,
+        UNKNOWN
     };
 } // end namespace isa
 

@@ -1,7 +1,6 @@
 #pragma once
 
-#include "memory.h"
-#include "cpu.h"
+#include "machine.h"
 #include <fstream>
 #include <iostream>
 #include <filesystem>
@@ -15,19 +14,13 @@ class Simulator {
 public:
     explicit Simulator(std::size_t mem_size = memory::MEM_SIZE, Mode mode = Mode::DEFAULT);
 
-    void load_program(const std::string& input_path, const std::vector<int32_t>& args);
-
+    void load_program(const std::string& input_path, const std::vector<word_t>& args);
+    void set_debug_mode(bool dbg) { mode = dbg ? Mode::DEBUG : Mode::DEFAULT; };
     void run();
 
 private:
-    Memory mem;
-    CPU cpu;
-    
-    std::string input_path;
-    std::string output_path;
-    std::vector<int32_t> args;
+    Machine machine;
     Mode mode;
-    word_t file_size;
-
-    bool handle_syscall();
+    std::string input_path;
+    std::vector<int32_t> args;
 };

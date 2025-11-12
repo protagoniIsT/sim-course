@@ -5,7 +5,7 @@
 
 namespace helpers {
     template<int Bits>
-    constexpr int32_t sign_extend(word_t value) {
+    constexpr word_t sign_extend(word_t value) {
         static_assert(Bits > 0 && Bits <= 31, "Bits must be between 1 and 31");
         const word_t mask = 1u << (Bits - 1);
         return (value ^ mask) - mask;

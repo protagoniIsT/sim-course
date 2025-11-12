@@ -29,5 +29,8 @@ prog do
         label :base 
             ld  x8,  8.(x9) # 68
             syscall
+
+            ld x8, 4.(x9) # put 0 (= SyscallCode::EXIT) in register x8
+            syscall
     end
 end

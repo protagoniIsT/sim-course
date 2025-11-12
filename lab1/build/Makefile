@@ -117,24 +117,51 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main.out
+# Target rules for targets named sim.out
 
 # Build rule for target.
-main.out: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main.out
-.PHONY : main.out
+sim.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sim.out
+.PHONY : sim.out
 
 # fast build rule for target.
-main.out/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/build
-.PHONY : main.out/fast
+sim.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/build
+.PHONY : sim.out/fast
+
+#=============================================================================
+# Target rules for targets named sim_tests.out
+
+# Build rule for target.
+sim_tests.out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sim_tests.out
+.PHONY : sim_tests.out
+
+# fast build rule for target.
+sim_tests.out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/build
+.PHONY : sim_tests.out/fast
+
+#=============================================================================
+# Target rules for targets named gflags_nothreads_static
+
+# Build rule for target.
+gflags_nothreads_static: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gflags_nothreads_static
+.PHONY : gflags_nothreads_static
+
+# fast build rule for target.
+gflags_nothreads_static/fast:
+	$(MAKE) $(MAKESILENT) -f external/gflags/CMakeFiles/gflags_nothreads_static.dir/build.make external/gflags/CMakeFiles/gflags_nothreads_static.dir/build
+.PHONY : gflags_nothreads_static/fast
 
 src/cpu.o: src/cpu.cpp.o
 .PHONY : src/cpu.o
 
 # target to build an object file
 src/cpu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/cpu.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/cpu.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/cpu.cpp.o
 .PHONY : src/cpu.cpp.o
 
 src/cpu.i: src/cpu.cpp.i
@@ -142,7 +169,8 @@ src/cpu.i: src/cpu.cpp.i
 
 # target to preprocess a source file
 src/cpu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/cpu.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/cpu.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/cpu.cpp.i
 .PHONY : src/cpu.cpp.i
 
 src/cpu.s: src/cpu.cpp.s
@@ -150,7 +178,8 @@ src/cpu.s: src/cpu.cpp.s
 
 # target to generate assembly for a file
 src/cpu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/cpu.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/cpu.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/cpu.cpp.s
 .PHONY : src/cpu.cpp.s
 
 src/decoder.o: src/decoder.cpp.o
@@ -158,7 +187,8 @@ src/decoder.o: src/decoder.cpp.o
 
 # target to build an object file
 src/decoder.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/decoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/decoder.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/decoder.cpp.o
 .PHONY : src/decoder.cpp.o
 
 src/decoder.i: src/decoder.cpp.i
@@ -166,7 +196,8 @@ src/decoder.i: src/decoder.cpp.i
 
 # target to preprocess a source file
 src/decoder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/decoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/decoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/decoder.cpp.i
 .PHONY : src/decoder.cpp.i
 
 src/decoder.s: src/decoder.cpp.s
@@ -174,7 +205,8 @@ src/decoder.s: src/decoder.cpp.s
 
 # target to generate assembly for a file
 src/decoder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/decoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/decoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/decoder.cpp.s
 .PHONY : src/decoder.cpp.s
 
 src/executor.o: src/executor.cpp.o
@@ -182,7 +214,8 @@ src/executor.o: src/executor.cpp.o
 
 # target to build an object file
 src/executor.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/executor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/executor.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/executor.cpp.o
 .PHONY : src/executor.cpp.o
 
 src/executor.i: src/executor.cpp.i
@@ -190,7 +223,8 @@ src/executor.i: src/executor.cpp.i
 
 # target to preprocess a source file
 src/executor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/executor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/executor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/executor.cpp.i
 .PHONY : src/executor.cpp.i
 
 src/executor.s: src/executor.cpp.s
@@ -198,7 +232,8 @@ src/executor.s: src/executor.cpp.s
 
 # target to generate assembly for a file
 src/executor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/executor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/executor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/executor.cpp.s
 .PHONY : src/executor.cpp.s
 
 src/helpers.o: src/helpers.cpp.o
@@ -206,7 +241,8 @@ src/helpers.o: src/helpers.cpp.o
 
 # target to build an object file
 src/helpers.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/helpers.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/helpers.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/helpers.cpp.o
 .PHONY : src/helpers.cpp.o
 
 src/helpers.i: src/helpers.cpp.i
@@ -214,7 +250,8 @@ src/helpers.i: src/helpers.cpp.i
 
 # target to preprocess a source file
 src/helpers.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/helpers.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/helpers.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/helpers.cpp.i
 .PHONY : src/helpers.cpp.i
 
 src/helpers.s: src/helpers.cpp.s
@@ -222,15 +259,68 @@ src/helpers.s: src/helpers.cpp.s
 
 # target to generate assembly for a file
 src/helpers.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/helpers.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/helpers.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/helpers.cpp.s
 .PHONY : src/helpers.cpp.s
+
+src/machine.o: src/machine.cpp.o
+.PHONY : src/machine.o
+
+# target to build an object file
+src/machine.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/machine.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/machine.cpp.o
+.PHONY : src/machine.cpp.o
+
+src/machine.i: src/machine.cpp.i
+.PHONY : src/machine.i
+
+# target to preprocess a source file
+src/machine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/machine.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/machine.cpp.i
+.PHONY : src/machine.cpp.i
+
+src/machine.s: src/machine.cpp.s
+.PHONY : src/machine.s
+
+# target to generate assembly for a file
+src/machine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/machine.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/machine.cpp.s
+.PHONY : src/machine.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 src/memory.o: src/memory.cpp.o
 .PHONY : src/memory.o
 
 # target to build an object file
 src/memory.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/memory.cpp.o
 .PHONY : src/memory.cpp.o
 
 src/memory.i: src/memory.cpp.i
@@ -238,7 +328,8 @@ src/memory.i: src/memory.cpp.i
 
 # target to preprocess a source file
 src/memory.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/memory.cpp.i
 .PHONY : src/memory.cpp.i
 
 src/memory.s: src/memory.cpp.s
@@ -246,7 +337,8 @@ src/memory.s: src/memory.cpp.s
 
 # target to generate assembly for a file
 src/memory.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/memory.cpp.s
 .PHONY : src/memory.cpp.s
 
 src/simulator.o: src/simulator.cpp.o
@@ -254,7 +346,8 @@ src/simulator.o: src/simulator.cpp.o
 
 # target to build an object file
 src/simulator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/simulator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/simulator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/simulator.cpp.o
 .PHONY : src/simulator.cpp.o
 
 src/simulator.i: src/simulator.cpp.i
@@ -262,7 +355,8 @@ src/simulator.i: src/simulator.cpp.i
 
 # target to preprocess a source file
 src/simulator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/simulator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/simulator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/simulator.cpp.i
 .PHONY : src/simulator.cpp.i
 
 src/simulator.s: src/simulator.cpp.s
@@ -270,32 +364,33 @@ src/simulator.s: src/simulator.cpp.s
 
 # target to generate assembly for a file
 src/simulator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/src/simulator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/src/simulator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/src/simulator.cpp.s
 .PHONY : src/simulator.cpp.s
 
-tests/main.o: tests/main.cpp.o
-.PHONY : tests/main.o
+tests/test_helpers.o: tests/test_helpers.cpp.o
+.PHONY : tests/test_helpers.o
 
 # target to build an object file
-tests/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/tests/main.cpp.o
-.PHONY : tests/main.cpp.o
+tests/test_helpers.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/tests/test_helpers.cpp.o
+.PHONY : tests/test_helpers.cpp.o
 
-tests/main.i: tests/main.cpp.i
-.PHONY : tests/main.i
+tests/test_helpers.i: tests/test_helpers.cpp.i
+.PHONY : tests/test_helpers.i
 
 # target to preprocess a source file
-tests/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/tests/main.cpp.i
-.PHONY : tests/main.cpp.i
+tests/test_helpers.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/tests/test_helpers.cpp.i
+.PHONY : tests/test_helpers.cpp.i
 
-tests/main.s: tests/main.cpp.s
-.PHONY : tests/main.s
+tests/test_helpers.s: tests/test_helpers.cpp.s
+.PHONY : tests/test_helpers.s
 
 # target to generate assembly for a file
-tests/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/tests/main.cpp.s
-.PHONY : tests/main.cpp.s
+tests/test_helpers.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/tests/test_helpers.cpp.s
+.PHONY : tests/test_helpers.cpp.s
 
 # Help Target
 help:
@@ -305,7 +400,9 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main.out"
+	@echo "... gflags_nothreads_static"
+	@echo "... sim.out"
+	@echo "... sim_tests.out"
 	@echo "... src/cpu.o"
 	@echo "... src/cpu.i"
 	@echo "... src/cpu.s"
@@ -318,15 +415,21 @@ help:
 	@echo "... src/helpers.o"
 	@echo "... src/helpers.i"
 	@echo "... src/helpers.s"
+	@echo "... src/machine.o"
+	@echo "... src/machine.i"
+	@echo "... src/machine.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/memory.o"
 	@echo "... src/memory.i"
 	@echo "... src/memory.s"
 	@echo "... src/simulator.o"
 	@echo "... src/simulator.i"
 	@echo "... src/simulator.s"
-	@echo "... tests/main.o"
-	@echo "... tests/main.i"
-	@echo "... tests/main.s"
+	@echo "... tests/test_helpers.o"
+	@echo "... tests/test_helpers.i"
+	@echo "... tests/test_helpers.s"
 .PHONY : help
 
 

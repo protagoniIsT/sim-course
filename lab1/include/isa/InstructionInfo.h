@@ -1,7 +1,6 @@
 #pragma once
 
 #include "InstructionDetails.h"
-#include "defs.h"
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -19,11 +18,11 @@ namespace isa {
     };
 
     struct DecodedInstr {
-        int32_t opcode;      
-        int32_t rd;
-        int32_t rs;
-        int32_t rt;
-        int32_t imm;
+        word_t opcode;      
+        word_t rd;
+        word_t rs;
+        word_t rt;
+        word_t imm;
         isa::InnerOpCode iopcode;
         bool changes_pc = false;
     };

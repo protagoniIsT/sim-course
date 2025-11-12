@@ -63,42 +63,113 @@ CMAKE_BINARY_DIR = /home/vboxuser/sim-course/lab1/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/main.out.dir/all
+all: CMakeFiles/sim.out.dir/all
+all: CMakeFiles/sim_tests.out.dir/all
+all: external/gflags/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: external/gflags/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/main.out.dir/clean
+clean: CMakeFiles/sim.out.dir/clean
+clean: CMakeFiles/sim_tests.out.dir/clean
+clean: external/gflags/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/main.out.dir
+# Directory level rules for directory external/gflags
+
+# Recursive "all" directory target.
+external/gflags/all: external/gflags/CMakeFiles/gflags_nothreads_static.dir/all
+.PHONY : external/gflags/all
+
+# Recursive "preinstall" directory target.
+external/gflags/preinstall:
+.PHONY : external/gflags/preinstall
+
+# Recursive "clean" directory target.
+external/gflags/clean: external/gflags/CMakeFiles/gflags_nothreads_static.dir/clean
+.PHONY : external/gflags/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sim.out.dir
 
 # All Build rule for target.
-CMakeFiles/main.out.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vboxuser/sim-course/lab1/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target main.out"
-.PHONY : CMakeFiles/main.out.dir/all
+CMakeFiles/sim.out.dir/all: external/gflags/CMakeFiles/gflags_nothreads_static.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vboxuser/sim-course/lab1/build/CMakeFiles --progress-num=5,6,7,8,9,10,11,12,13 "Built target sim.out"
+.PHONY : CMakeFiles/sim.out.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/main.out.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 8
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/main.out.dir/all
+CMakeFiles/sim.out.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 13
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sim.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 0
-.PHONY : CMakeFiles/main.out.dir/rule
+.PHONY : CMakeFiles/sim.out.dir/rule
 
 # Convenience name for target.
-main.out: CMakeFiles/main.out.dir/rule
-.PHONY : main.out
+sim.out: CMakeFiles/sim.out.dir/rule
+.PHONY : sim.out
 
 # clean rule for target.
-CMakeFiles/main.out.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.out.dir/build.make CMakeFiles/main.out.dir/clean
-.PHONY : CMakeFiles/main.out.dir/clean
+CMakeFiles/sim.out.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.out.dir/build.make CMakeFiles/sim.out.dir/clean
+.PHONY : CMakeFiles/sim.out.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sim_tests.out.dir
+
+# All Build rule for target.
+CMakeFiles/sim_tests.out.dir/all: external/gflags/CMakeFiles/gflags_nothreads_static.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vboxuser/sim-course/lab1/build/CMakeFiles --progress-num=14,15,16,17,18,19,20,21,22 "Built target sim_tests.out"
+.PHONY : CMakeFiles/sim_tests.out.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sim_tests.out.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 13
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sim_tests.out.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 0
+.PHONY : CMakeFiles/sim_tests.out.dir/rule
+
+# Convenience name for target.
+sim_tests.out: CMakeFiles/sim_tests.out.dir/rule
+.PHONY : sim_tests.out
+
+# clean rule for target.
+CMakeFiles/sim_tests.out.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim_tests.out.dir/build.make CMakeFiles/sim_tests.out.dir/clean
+.PHONY : CMakeFiles/sim_tests.out.dir/clean
+
+#=============================================================================
+# Target rules for target external/gflags/CMakeFiles/gflags_nothreads_static.dir
+
+# All Build rule for target.
+external/gflags/CMakeFiles/gflags_nothreads_static.dir/all:
+	$(MAKE) $(MAKESILENT) -f external/gflags/CMakeFiles/gflags_nothreads_static.dir/build.make external/gflags/CMakeFiles/gflags_nothreads_static.dir/depend
+	$(MAKE) $(MAKESILENT) -f external/gflags/CMakeFiles/gflags_nothreads_static.dir/build.make external/gflags/CMakeFiles/gflags_nothreads_static.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vboxuser/sim-course/lab1/build/CMakeFiles --progress-num=1,2,3,4 "Built target gflags_nothreads_static"
+.PHONY : external/gflags/CMakeFiles/gflags_nothreads_static.dir/all
+
+# Build rule for subdir invocation for target.
+external/gflags/CMakeFiles/gflags_nothreads_static.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 external/gflags/CMakeFiles/gflags_nothreads_static.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vboxuser/sim-course/lab1/build/CMakeFiles 0
+.PHONY : external/gflags/CMakeFiles/gflags_nothreads_static.dir/rule
+
+# Convenience name for target.
+gflags_nothreads_static: external/gflags/CMakeFiles/gflags_nothreads_static.dir/rule
+.PHONY : gflags_nothreads_static
+
+# clean rule for target.
+external/gflags/CMakeFiles/gflags_nothreads_static.dir/clean:
+	$(MAKE) $(MAKESILENT) -f external/gflags/CMakeFiles/gflags_nothreads_static.dir/build.make external/gflags/CMakeFiles/gflags_nothreads_static.dir/clean
+.PHONY : external/gflags/CMakeFiles/gflags_nothreads_static.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
