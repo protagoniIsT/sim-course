@@ -1,3 +1,3 @@
-[submodule "lab1/external/gflags"]
-	path = lab1/external/gflags
-	url = https://github.com/gflags/gflags.git
+[submodule "external/gflags"]
+    path = external/gflags
+    url = https://github.com/gflags/gflags.git
