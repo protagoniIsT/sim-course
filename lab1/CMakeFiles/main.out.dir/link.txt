@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/main.out.dir/src/assembler.cpp.o CMakeFiles/main.out.dir/src/cpu.cpp.o CMakeFiles/main.out.dir/src/decoder.cpp.o CMakeFiles/main.out.dir/src/executor.cpp.o CMakeFiles/main.out.dir/src/helpers.cpp.o CMakeFiles/main.out.dir/src/memory.cpp.o CMakeFiles/main.out.dir/src/simulator.cpp.o CMakeFiles/main.out.dir/tests/main.cpp.o -o build/main.out 
