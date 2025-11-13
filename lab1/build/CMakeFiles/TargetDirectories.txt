@@ -1,7 +1,0 @@
-/home/vboxuser/sim-course/lab1/build/CMakeFiles/sim.out.dir
-/home/vboxuser/sim-course/lab1/build/CMakeFiles/sim_tests.out.dir
-/home/vboxuser/sim-course/lab1/build/CMakeFiles/edit_cache.dir
-/home/vboxuser/sim-course/lab1/build/CMakeFiles/rebuild_cache.dir
-/home/vboxuser/sim-course/lab1/build/external/gflags/CMakeFiles/gflags_nothreads_static.dir
-/home/vboxuser/sim-course/lab1/build/external/gflags/CMakeFiles/edit_cache.dir
-/home/vboxuser/sim-course/lab1/build/external/gflags/CMakeFiles/rebuild_cache.dir
